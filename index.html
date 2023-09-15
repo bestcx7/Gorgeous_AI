@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BestCX7</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1)), url('images/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }  
+
+    header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+      background-color: #f0f0f0;
+    }
+
+    .nav-container {
+      position: relative;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      display: none;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container:hover .nav-dropdown {
+      display: block;
+    }
+
+    .nav-item {
+      padding: 10px;
+      text-align: right;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .nav-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    p {
+        font-family:“Microsoft YaHei”;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6AB5FF, 0 0 70px #6AB5FF, 0 0 80px #6AB5FF, 0 0 100px #6AB5FF, 0 0 150px #6AB5FF;
+        font-size: 18px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        max-width: 300px;
+      }
+
+    .rectangle {
+        background-color: #ffffff;
+        margin: 20px;
+        text-align: center;
+        padding: 20px;
+        border: none;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        width: 70%;
+      }
+  
+      .rectangle img {
+        margin-left: 10px;
+        height: 24px; /* Adjust the height as needed */
+      }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <button class="nav-btn">☰</button>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-item">笔记</a>
+        <a href="#" class="nav-item">大模型</a>
+        <a href="#" class="nav-item">声音识别</a>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <p>
+        三步构建虚拟数字人
+        <br>
+        1. 合成语音
+        <br>
+        2. 选择大模型
+        <br>
+        3. 合成虚拟形象
+      </p>
+    <button class="rectangle" onclick="window.location.href='voice_synthesis_page.html'">
+        语音合成
+        <img src="path/to/your/icon.png" alt="Icon">
+      </button>
+    
+      <button class="rectangle" onclick="window.location.href='large_models_page.html'">
+        大模型
+        <img src="path/to/your/icon.png" alt="Icon">
+      </button>
+    
+      <button class="rectangle" onclick="window.location.href='virtual_characters_page.html'">
+        虚拟人物
+        <img src="path/to/your/icon.png" alt="Icon">
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Your Website</p>
+  </footer>
+</body>
+</html>
