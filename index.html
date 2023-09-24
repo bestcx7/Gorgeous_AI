@@ -9,7 +9,7 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1)), url('images/background.jpg');
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('images/background.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -19,7 +19,6 @@
       display: flex;
       justify-content: flex-end;
       padding: 10px;
-      background-color: #f0f0f0;
     }
 
     .nav-container {
@@ -30,6 +29,7 @@
       background: none;
       border: none;
       cursor: pointer;
+      color: #fff;
     }
 
     .nav-dropdown {
@@ -38,7 +38,7 @@
       right: 0;
       display: none;
       background-color: #fff;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px rgba(24, 24, 24, 24);
     }
 
     .nav-container:hover .nav-dropdown {
@@ -60,20 +60,27 @@
     p {
         font-family:“Microsoft YaHei”;
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6AB5FF, 0 0 70px #6AB5FF, 0 0 80px #6AB5FF, 0 0 100px #6AB5FF, 0 0 150px #6AB5FF;
-        font-size: 18px;
+        font-size: 30px;
         color: white;
-        text-align: center;
+        text-align: left;
         font-weight: bold;
         max-width: 300px;
+        margin: 60px;
       }
 
+    p span {
+        font-size: 15px; /* Adjust the font size for each line */
+        display: block; /* Display each line on a new line */
+    }
+
     .rectangle {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         background-color: #ffffff;
-        margin: 20px;
+        margin: 50px;
         text-align: center;
-        padding: 20px;
+        padding: 50px;
         border: none;
-        border-radius: 20px;
+        border-radius: 60px;
         display: flex;
         align-items: center;
         width: 70%;
@@ -83,6 +90,7 @@
         margin-left: 10px;
         height: 24px; /* Adjust the height as needed */
       }
+
 
   </style>
 </head>
@@ -100,14 +108,12 @@
   
   <main>
     <p>
-        三步构建虚拟数字人
-        <br>
-        1. 合成语音
-        <br>
-        2. 选择大模型
-        <br>
-        3. 合成虚拟形象
-      </p>
+        三步构建虚拟人物<br>
+        <span>1. 合成语音</span>
+        <span>2. 选择大模型</span>
+        <span>3. 合成虚拟形象</span>
+    </p>
+
     <button class="rectangle" onclick="window.location.href='voice_synthesis_page.html'">
         语音合成
         <img src="path/to/your/icon.png" alt="Icon">
