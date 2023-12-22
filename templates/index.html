@@ -12,7 +12,7 @@
             text-align: left;
             padding: 20px;
             margin: 0; /* 清除 body 的默认外边距 */
-            background-image: url('/root/autodl-tmp/TTS/templates/background2.jpeg'); /* 添加背景图片的路径 */
+            background-image: radial-gradient(ellipse at 5% 5%, #66aaff, #FFFFFF 70%, #ffffcc, #ff99cc);/* 添加背景图片的路径 */
             background-size: cover; /* 调整背景图片的大小以覆盖整个页面 */
             background-repeat: no-repeat; /* 防止背景图片重复显示 */
         }
@@ -22,7 +22,7 @@
         .logo-container {
             position: absolute; /* 使用绝对定位 */
             top: 20px; /* 距离顶部的距离 */
-            left: 70px; /* 距离左侧的距离 */
+            left: 50px; /* 距离左侧的距离 */
             color: #000; /* 设置文本颜色为黑色 */
             font-size: 0.8em; /* 设置字体大小为3em，调整为适当的大小 */
             text-shadow: 2px 2px 2px #fff; /* 添加文字阴影效果，颜色为白色 */
@@ -113,27 +113,33 @@
     
         /* 下载按钮样式 */
         #downloadLink {
-            margin-top: 10px; /* 设置距离播放器的顶部外边距，调整为您需要的值 */
-            margin-left: 15px; /* 设置距离左侧的外边距，调整为您需要的值 */
+            margin-top: 10px;
+            margin-left: 50px;
             display: inline-block;
             text-decoration: none;
-            display: flex; /* 设置为弹性容器 */
+            display: flex;
         }
     
         /* 下载按钮内部的按钮样式 */
         #downloadLink button {
-            margin-left: 35px; /* 设置距离左边框的距离为20px */
-            padding: 10px; /* 内边距 */
-            background-color: #0066cc; /* 背景颜色 */
-            color: white; /* 文字颜色 */
-            border: none; /* 去掉边框 */
-            border-radius: 15px; /* 边角半径 */
-            cursor: pointer; /* 鼠标样式为手型 */
+            margin-bottom: 40px;
+            padding: 15px;
+            background-color: #A9A9A9; /* 初始为灰蓝色 */
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: not-allowed; /* 不可点击时的鼠标样式 */
+            width: 200px;
         }
     
         /* 下载按钮悬停时的样式 */
         #downloadLink button:hover {
-            background-color: #004080; /* 悬停时改变背景颜色为深蓝色 */
+            background-color: #A9A9A9; /* 不可点击时悬停状态不变 */
+        }
+
+        #downloadLink.active button {
+            background-color: #0066cc; /* 可点击时的深蓝色 */
+            cursor: pointer; /* 可点击时的鼠标样式 */
         }
 
     </style>
@@ -199,8 +205,8 @@
     </audio>
 
     <!-- 添加 WAV 文件下载链接 -->
-    <a id="downloadLink" download="output.wav" href="#" >
-        <button type="button">下载 WAV 文件</button>
+    <a id="downloadLink" class="inactive" download="output.wav" href="#" >
+        <button id="downloadButton" type="button" disabled>下载 WAV 文件</button>
     </a>
 </div>
 
@@ -226,7 +232,7 @@
         formData.append("text", textInputValue);
         formData.append("language", languageSelectValue);
         // 将文件添加到 FormData 对象中
-        formData.append("wav_file", waveFile);
+        formData.append("speaker_wav", waveFile);
 
         // 打印请求数据到控制台
         console.log("Request Data:", formData);
@@ -247,19 +253,28 @@
         .then(blobData => {
             // 处理成功的响应，更新页面元素显示结果信息
             console.log("Received WAV data:", blobData); // 打印响应数据到控制台
+
+            // 获取下载按钮和按钮状态
+            const downloadLink = document.getElementById("downloadLink");
+            const downloadButton = document.getElementById("downloadButton");
+
         
             // 将 Blob 对象设置为音频播放器的源
             const audioPlayer = document.getElementById("audioPlayer");
             const audioSource = document.getElementById("audioSource");
             audioSource.src = URL.createObjectURL(blobData);
+            console.log("audioSource:", audioSource.src)
         
             // 显示音频播放器和下载链接
             audioPlayer.style.display = "block";
             document.getElementById("downloadLink").style.display = "block";
         
             // 将 Blob 对象设置为下载链接的 href
-            const downloadLink = document.getElementById("downloadLink");
             downloadLink.href = URL.createObjectURL(blobData);
+            
+            // 根据后端返回的状态设置按钮样式和状态
+            downloadLink.classList.add("active");
+            downloadButton.disabled = false;
         })
         .catch(error => {
             // 处理错误，输出详细的错误信息到页面和控制台
@@ -278,4 +293,3 @@
 
 </body>
 </html>
-
