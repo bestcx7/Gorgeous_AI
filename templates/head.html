@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Gorgeous AI</title>
+    <style>
+        /* 设置整个页面的样式，包括背景图片 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0; /* 设置默认背景颜色 */
+            background-image: radial-gradient(ellipse at 95% 95%, #66aaff, #FFFFFF 70%, #ffffcc, #ff99cc);/* 添加背景图片的路径 */
+            background-size: cover; /* 调整背景图片的大小以覆盖整个页面 */
+            background-repeat: no-repeat; /* 防止背景图片重复显示 */
+            background-attachment: fixed; /* 使背景图片固定，不随页面滚动 */
+        }
+
+        /* 外层容器，包含 "Gorgeous AI" */
+        .logo-container {
+            position: absolute; /* 使用绝对定位 */
+            top: 1%; /* 距离顶部的距离 */
+            left: 1%; /* 距离左侧的距离 */
+            color: #000; /* 设置文本颜色为黑色 */
+            font-size: 0.5em; /* 使用相对单位调整字体大小，相对于父元素的大小 */
+        }
+
+        .model-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 4%; /* 使用百分比调整内边距，相对于父元素宽度的百分比 */
+            width: 100%; /* 设置宽度为父容器的100% */
+        }
+
+        .model-item {
+            text-align: left;
+            margin: 2%; /* 使用百分比调整外边距，相对于父元素宽度的百分比 */
+            width: 100%; /* 设置宽度为父容器的100% */
+        }
+
+        img {
+            width: 90%; /* 使图片占满父容器的宽度 */
+            height: 90%; /* 使图片占满父容器的高度 */
+            object-fit: cover; /* 缩放图片以适应容器，保持宽高比 */
+            border-radius: 4em; /* 使用相对单位调整边角半径，相对于图片尺寸的百分比 */
+        }
+
+        .model-info {
+            background-color: transparent; /* 设置背景颜色为透明 */
+            font-size: 3em;
+            padding: 3%; /* 使用百分比调整内边距，相对于父元素宽度的百分比 */
+            white-space: nowrap; /* 防止文本换行 */
+        }
+
+        .btn-enter {
+            padding: 3%; /* 使用百分比调整内边距，相对于父元素宽度的百分比 */
+            background-color: #0066cc; /* 设置背景颜色为蓝色 */
+            color: white; /* 设置文字颜色为白色 */
+            border: none; /* 去掉边框 */
+            font-size: 0.5em;
+            border-radius: 4em; /* 使用相对单位调整边角半径，相对于按钮尺寸的百分比 */
+            cursor: pointer; /* 设置鼠标样式为手型 */
+            text-decoration: none; /* 去掉文本装饰（下划线）*/
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- Logo的容器 -->
+    <div class="logo-container">
+        <h1>Gorgeous AI</h1>
+        <section class="model-section" id="modelSection">
+            <div class="model-item">
+                <img src="template.jpg" alt="Model 1">
+                <div class="model-info">
+                    <p>克隆任何人的声音</p>
+                    <a href="TTS.html" class="btn-enter">开始使用</a>
+                </div>
+            </div>
+    
+            <!-- Add more model items as needed -->
+        </section>
+    </div>
+
+    
+
+    <script>
+    </script>
+</body>
+</html>
