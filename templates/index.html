@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorgeous AI</title>
+    <style>
+        /* 设置整个页面的样式，包括背景图片 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0; /* 设置默认背景颜色 */
+            text-align: left;
+            padding: 20px;
+            margin: 0; /* 清除 body 的默认外边距 */
+            background-image: url('/root/autodl-tmp/TTS/templates/background2.jpeg'); /* 添加背景图片的路径 */
+            background-size: cover; /* 调整背景图片的大小以覆盖整个页面 */
+            background-repeat: no-repeat; /* 防止背景图片重复显示 */
+        }
+    
+
+        /* 外层容器，包含 "Gorgeous AI" 和 "AI属于人民" */
+        .logo-container {
+            position: absolute; /* 使用绝对定位 */
+            top: 20px; /* 距离顶部的距离 */
+            left: 70px; /* 距离左侧的距离 */
+            color: #000; /* 设置文本颜色为黑色 */
+            font-size: 0.8em; /* 设置字体大小为3em，调整为适当的大小 */
+            text-shadow: 2px 2px 2px #fff; /* 添加文字阴影效果，颜色为白色 */
+        }
+
+        /* 口号文本 */
+        .slogan {
+            position: absolute;
+            top: 45px; /* 距离顶部的距离 */
+            left: 10px; /* 距离左侧的距离 */
+            font-size: 0.1em; /* 设置字体大小为1.5em，调整为适当的大小 */
+            color: #000; /* 设置文本颜色为深灰色 */
+            transform: scaleX(1.2); /* 使用 transform 水平拉伸文本，scaleX(2) 表示水平方向拉伸为原来的两倍 */
+        }
+     
+    
+        /* 设置表单的样式 */
+        form {
+            margin-top: 100px; /* 设置表单顶部的外边距为 20px */
+            margin-left: 50px;
+        }
+    
+        /* 设置标签的样式 */
+        label {
+            font-weight: bold; /* 设置标签文字加粗 */
+            display: block; /* 将标签显示为块级元素，占据整行 */
+            margin-bottom: 5px; /* 设置标签底部外边距为 5px */
+            font-size: 0.5em; /* 设置标签字体大小为 1.2em，调整为适当的大小 */
+        }
+
+    
+        /* 设置选择框的样式 */
+        select {
+            margin-bottom: 10px; /* 设置底部外边距为 10px */
+            padding: 5px; /* 设置内边距为 12px，调整为更大的大小 */
+            font-size: 0.6em; /* 设置字体大小为 1.2em，调整为更大的大小 */
+            border: none; /* 设置无边框 */
+            border-radius: 5px; /* 设置边角半径为 5px */
+        }
+
+
+        /* 设置文本输入框的样式 */
+        textarea {
+            margin-bottom: 10px; /* 设置底部外边距为 10px */
+            padding: 30px 20px; /* 设置内边距为 12px，调整为更大的大小 */
+            font-size: 1em; /* 设置字体大小为 1.2em，调整为更大的大小 */
+            border: 1px solid #ccc; /* 设置细边框，颜色为灰色 */
+            border-radius: 20px; /* 设置边角半径为 5px */
+            background-color: #fff; /* 设置背景颜色为白色 */
+            width: 300px; /* 设置输入框宽度为 300px，调整为更大的宽度 */
+        }
+
+        /* 文件上传框的样式 */
+        input[type="file"] {
+            margin-bottom: 10px; /* 设置底部外边距为 10px */
+        }
+
+
+        /* 提交按钮的样式 */
+        button {
+            margin-bottom: 40px; /* 设置底部外边距为 20px，调整为更大的距离 */
+            padding: 15px; /* 设置内边距为 10px */
+            background-color: #0066cc; /* 设置背景颜色为蓝色 */
+            color: white; /* 设置文字颜色为白色 */
+            border: none; /* 去掉边框 */
+            border-radius: 15px; /* 设置边角半径为 5px */
+            cursor: pointer; /* 设置鼠标样式为手型 */
+            width: 200px; /* 设置按钮宽度为 200px，调整为更大的宽度 */
+        }
+
+        /* 鼠标悬停时的样式 */
+        button:hover {
+            background-color: #004080; /* 悬停时改变背景颜色为深蓝色 */
+        }
+
+        /* 音频播放器样式 */
+        #audioPlayer {
+            margin-top: 5px;
+            margin-left: 45px; /* 设置距离左边框的距离为20px */
+            width: 30%; /* 设置宽度为80% */
+            background-color: #f0f0f0; /* 背景颜色 */
+            border: 1px solid #ccc; /* 边框颜色 */
+            border-radius: 100px; /* 边角半径 */
+            padding: 1px; /* 内边距 */
+            display: flex; /* 设置为弹性容器 */
+        }
+
+    
+        /* 下载按钮样式 */
+        #downloadLink {
+            margin-top: 10px; /* 设置距离播放器的顶部外边距，调整为您需要的值 */
+            margin-left: 15px; /* 设置距离左侧的外边距，调整为您需要的值 */
+            display: inline-block;
+            text-decoration: none;
+            display: flex; /* 设置为弹性容器 */
+        }
+    
+        /* 下载按钮内部的按钮样式 */
+        #downloadLink button {
+            margin-left: 35px; /* 设置距离左边框的距离为20px */
+            padding: 10px; /* 内边距 */
+            background-color: #0066cc; /* 背景颜色 */
+            color: white; /* 文字颜色 */
+            border: none; /* 去掉边框 */
+            border-radius: 15px; /* 边角半径 */
+            cursor: pointer; /* 鼠标样式为手型 */
+        }
+    
+        /* 下载按钮悬停时的样式 */
+        #downloadLink button:hover {
+            background-color: #004080; /* 悬停时改变背景颜色为深蓝色 */
+        }
+
+    </style>
+    
+</head>
+
+<body>
+
+<!-- Logo 和口号的容器 -->
+<div class="logo-container">
+    <h1>Gorgeous AI</h1>
+    <p class="slogan">AI属于人民</p>
+</div>
+
+<form id="ttsForm" enctype="multipart/form-data">
+    <!-- 标签和输入框，用于输入要转换的文本 -->
+    <label for="textInput"></label>
+    <textarea id="textInput" name="text" placeholder="输入要转换的文本..."></textarea>
+    <br>
+
+    <!-- 下拉框，用于选择要使用的语言 -->
+    <label for="languageSelect">选择使用的语言:</label>
+    <select id="languageSelect" name="language">
+        <option value="en">英语</option>
+        <option value="es">西班牙语</option>
+        <option value="fr">法语</option>
+        <option value="de">德语</option>
+        <option value="it">意大利语</option>
+        <option value="pt">葡萄牙语</option>
+        <option value="pl">波兰语</option>
+        <option value="tr">土耳其语</option>
+        <option value="ru">俄语</option>
+        <option value="nl">荷兰语</option>
+        <option value="cs">捷克语</option>
+        <option value="ar">阿拉伯语</option>
+        <option value="zh-cn">中文（简体）</option>
+        <option value="ja">日语</option>
+        <option value="hu">匈牙利语</option>
+        <option value="ko">韩语</option>
+        <!-- 在这里添加其他支持的语言 -->
+    </select>
+    <br>
+
+    <!-- 文件上传框，用于选择 WAV 文件 -->
+    <label for="fileInput">上传克隆的 WAV 文件:</label>
+    <input type="file" id="fileInput" name="speaker_wav">
+    <br>
+
+    <!-- 提交按钮，点击时触发 JavaScript 函数 submitRequest() -->
+    <button type="button" onclick="submitRequest()">生成</button>
+    <br>
+    
+</form>
+
+<!-- 在 #result 元素后添加音频播放器和下载链接 -->
+<div id="result">
+    
+    <!-- 添加音频播放器 -->
+    <audio id="audioPlayer" controls >
+        <!-- 使用 JavaScript 动态设置音频源 -->
+        <source id="audioSource" type="audio/wav">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- 添加 WAV 文件下载链接 -->
+    <a id="downloadLink" download="output.wav" href="#" >
+        <button type="button">下载 WAV 文件</button>
+    </a>
+</div>
+
+<script>
+        // JavaScript 函数，用于提交文本到语音合成 API
+    function submitRequest() {
+        // 获取文本输入框的值
+        const textInputValue = document.getElementById("textInput").value;
+        console.log("textInputValue:", textInputValue);
+
+        // 获取语言选择框的值
+        const languageSelectValue = document.getElementById("languageSelect").value;
+        console.log("languageSelectValue:", languageSelectValue);
+
+        // 获取用户上传的 WAV 文件
+        const waveFileInput = document.getElementById("fileInput");
+        const waveFile = waveFileInput.files[0];
+        console.log("waveFile:", waveFile);
+
+        // 创建 FormData 对象，用于包装表单数据
+        const formData = new FormData();
+        // 将文本和语言信息添加到 FormData 对象中
+        formData.append("text", textInputValue);
+        formData.append("language", languageSelectValue);
+        // 将文件添加到 FormData 对象中
+        formData.append("wav_file", waveFile);
+
+        // 打印请求数据到控制台
+        console.log("Request Data:", formData);
+
+        // 发起 POST 请求到语音合成 API
+        fetch("https://u88432-8972-55ac6960.westb.seetacloud.com:8443/tts", {
+            method: "POST", // 使用 POST 方法
+            body: formData // 将 FormData 对象作为请求体
+        })
+        .then(response => {
+            if (response.ok) {
+                // 如果响应状态码为 OK
+                return response.blob(); // 将响应转换为 Blob 对象
+            } else {
+                throw new Error("Network response was not ok.");
+            }
+        })
+        .then(blobData => {
+            // 处理成功的响应，更新页面元素显示结果信息
+            console.log("Received WAV data:", blobData); // 打印响应数据到控制台
+        
+            // 将 Blob 对象设置为音频播放器的源
+            const audioPlayer = document.getElementById("audioPlayer");
+            const audioSource = document.getElementById("audioSource");
+            audioSource.src = URL.createObjectURL(blobData);
+        
+            // 显示音频播放器和下载链接
+            audioPlayer.style.display = "block";
+            document.getElementById("downloadLink").style.display = "block";
+        
+            // 将 Blob 对象设置为下载链接的 href
+            const downloadLink = document.getElementById("downloadLink");
+            downloadLink.href = URL.createObjectURL(blobData);
+        })
+        .catch(error => {
+            // 处理错误，输出详细的错误信息到页面和控制台
+            console.error("Error:", error);
+            
+            // 如果存在响应的详细信息，则输出到控制台
+            if (error.details) {
+                console.error("Validation details:", error.details);
+            }
+        
+            document.getElementById("result").innerHTML = "Error occurred during the request.";
+        });
+    }
+
+</script>
+
+</body>
+</html>
+
