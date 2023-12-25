@@ -8,6 +8,9 @@ sys.path.append('/root/autodl-tmp/TTS')
 from fastapi import FastAPI, HTTPException, File, UploadFile, Form
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
 
 import torch
 import datetime
@@ -16,6 +19,10 @@ from TTS.api import TTS
 # 创建 FastAPI 实例
 app = FastAPI()
 
+# 设置静态文件夹
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory="templates")
 
 # 获取设备（使用 GPU 或 CPU）
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -73,5 +80,10 @@ async def tts_endpoint(
 # 新增路由以提供 HTML 文件
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
-    html_path = "templates/index.html"
+    html_path = "templates/head.html"
     return FileResponse(html_path)
+
+
+@app.get("/TTS", response_class=HTMLResponse)
+async def tts_page(request: Request):
+    return templates.TemplateResponse("TTS.html", {"request": request})
