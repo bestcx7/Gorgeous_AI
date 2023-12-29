@@ -28,7 +28,7 @@ templates = Jinja2Templates(directory="templates")
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # 初始化 TTS（文本转语音）模型
-# tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 
 # 定义支持的语言列表
 supported_languages = ["en", "es", "fr", "de", "it", "pt", "pl", "tr", "ru", "nl", "cs", "ar", "zh-cn", "ja", "hu", "ko"]
@@ -50,7 +50,6 @@ async def tts_endpoint(
     language: str = Form(...),
     speaker_wav: UploadFile = File(...),
     ):
-
 
     # 将上传的 WAV 文件保存到临时目录
     # 使用 Python 的 tempfile 模块创建一个临时文件，并保留在文件系统中（delete=False）
